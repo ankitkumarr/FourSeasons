@@ -1,9 +1,12 @@
 package akumar3;
 
 import java.awt.Dimension;
+import java.util.Random;
 
-import heineman.Klondike;
+import heineman.klondike.KlondikeDeckController;
+import ks.common.controller.SolitaireMouseMotionAdapter;
 import ks.common.games.Solitaire;
+import ks.common.games.SolitaireUndoAdapter;
 import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Deck;
@@ -66,7 +69,10 @@ public class FourSeasons extends Solitaire {
 			}
 
 	private void initializeControllers() {
-		// TODO Auto-generated method stub
+		deckView.setMouseAdapter(new FourSeasonsDeckController (this, deck, wastepile));
+		deckView.setMouseMotionAdapter (new SolitaireMouseMotionAdapter(this));
+		deckView.setUndoAdapter (new SolitaireUndoAdapter(this));
+
 		
 	}
 
@@ -94,17 +100,17 @@ public class FourSeasons extends Solitaire {
 			container.addWidget (columnViews[col]);
 		}
 		wastepileView = new RowView(wastepile);
-		wastepileView.setBounds(50 + ci.getWidth(), 120 + (ci.getHeight()*7), ci.getWidth(), ci.getHeight());
+		wastepileView.setBounds(50 + ci.getWidth(), 120 + (ci.getHeight()*7), 20*ci.getWidth(), ci.getHeight());
 		container.addWidget(wastepileView);
 		
 		scoreView = new IntegerView (getScore());
-		scoreView.setFontSize (14);
-		scoreView.setBounds (90+12*ci.getWidth(), 120 + 7*ci.getHeight(), 100, 60);
+		scoreView.setFontSize (36);
+		scoreView.setBounds (90+21*ci.getWidth(), 120 + 7*ci.getHeight(), 100, 60);
 		container.addWidget (scoreView);
 
 		numLeftView = new IntegerView (getNumLeft());
-		numLeftView.setFontSize (14);
-		numLeftView.setBounds (200+12*ci.getWidth(), 120 + 7*ci.getHeight(), 100, 60);
+		numLeftView.setFontSize (36);
+		numLeftView.setBounds (200+21*ci.getWidth(), 120 + 7*ci.getHeight(), 100, 60);
 		container.addWidget (numLeftView);
 		
 	}
@@ -131,7 +137,7 @@ public class FourSeasons extends Solitaire {
 		wastepile = new Column ("wastepile");
 		model.addElement(wastepile);
 		
-		updateNumberCardsLeft(52);
+
 		updateScore(0);
 		
 	}
@@ -139,7 +145,7 @@ public class FourSeasons extends Solitaire {
 	public static void main (String []args) {
 		// Seed is to ensure we get the same initial cards every time.
 		// Here the seed is to "order by suit."
-		Main.generateWindow(new FourSeasons(), Deck.OrderBySuit);
+		Main.generateWindow(new FourSeasons(), new Random().nextInt());
 	}
 		
 		
