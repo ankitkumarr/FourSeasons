@@ -49,9 +49,9 @@ public class CrossPileToFoundationMove extends Move {
 				return true;
 			}
 		}
-		else if ((foundation.peek().isAce()) && (cardBeingDragged.getRank() == cardBeingDragged.KING) && (cardBeingDragged.getSuit() == foundation.peek().getSuit()))
+		else if ((cardBeingDragged.isAce()) && (foundation.peek().getRank() == foundation.peek().KING) && (cardBeingDragged.getSuit() == foundation.peek().getSuit()))
 			return true;
-		else if ((cardBeingDragged.getRank() == foundation.rank() - 1) && (cardBeingDragged.getSuit() == foundation.peek().getSuit()))
+		else if ((cardBeingDragged.getRank() == foundation.rank() + 1) && (cardBeingDragged.getSuit() == foundation.peek().getSuit()))
 			return true;
 		return false;
 	}

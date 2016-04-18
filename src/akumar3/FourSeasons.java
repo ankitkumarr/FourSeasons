@@ -44,8 +44,7 @@ public class FourSeasons extends Solitaire {
 	@Override
 	public boolean hasWon() {
 		// TODO Auto-generated method stub
-		//return getScore().getValue()==52;
-		return false;
+		return getScore().getValue()==3;
 	}
 	
 
@@ -62,21 +61,18 @@ public class FourSeasons extends Solitaire {
 		//Deck of cards to be dealt
 		// initialize model
 		
-		//TODO firstfoundationRank
-			this.firstFoundationRank = 1;
 				initializeModel(getSeed());
 				initializeView();
 				initializeControllers();
 				
 
 				
-				updateScore(0);
-				updateNumberCardsLeft (52);
+				updateScore(1);
+				updateNumberCardsLeft (46);
 			}
 
 	private void initializeControllers() {
 		
-		//TODO firstfoundationRank
 		deckView.setMouseAdapter(new FourSeasonsDeckController (this, deck, wastepile));
 		deckView.setMouseMotionAdapter (new SolitaireMouseMotionAdapter(this));
 		deckView.setUndoAdapter (new SolitaireUndoAdapter(this));
@@ -151,13 +147,21 @@ public class FourSeasons extends Solitaire {
 			piles[i] = new Pile("pile" + Integer.toString(i+1));
 			model.addElement(piles[i]);
 		}
+		Card card = deck.get();
+		piles[0].add(card);
+		firstFoundationRank = card.getRank();
+		
 		
 		columns = new Column[5];
 		
 		for(int j = 0; j < 5; j++) {
 			columns[j] = new Column("column" + Integer.toString(j+1));
 			model.addElement(columns[j]);
+			Card temp = deck.get();
+			columns[j].add(temp);
+
 		}
+		
 		
 		wastepile = new Column ("wastepile");
 		model.addElement(wastepile);

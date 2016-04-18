@@ -38,7 +38,7 @@ public class FourSeasonsFoundationController extends java.awt.event.MouseAdapter
 		/** Return if there is no card being dragged chosen. */
 		Widget draggingWidget = c.getActiveDraggingObject();
 		if (draggingWidget == Container.getNothingBeingDragged()) {
-			System.err.println ("FoundationController::mouseReleased() unexpectedly found nothing being dragged.");
+			//System.err.println ("FoundationController::mouseReleased() unexpectedly found nothing being dragged.");
 			c.releaseDraggingObject();		
 			return;
 		}
@@ -46,7 +46,7 @@ public class FourSeasonsFoundationController extends java.awt.event.MouseAdapter
 		/** Recover the from BuildablePile OR waste Pile */
 		Widget fromWidget = c.getDragSource();
 		if (fromWidget == null) {
-			System.err.println ("FoundationController::mouseReleased(): somehow no dragsource in container.");
+			//System.err.println ("FoundationController::mouseReleased(): somehow no dragsource in container.");
 			c.releaseDraggingObject();
 			return;
 		}

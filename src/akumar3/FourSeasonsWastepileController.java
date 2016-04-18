@@ -45,7 +45,7 @@ public class FourSeasonsWastepileController extends SolitaireReleasedAdapter {
 		// cardView widget reflect the original card location on the screen.
 		Widget w = c.getActiveDraggingObject();
 		if (w != Container.getNothingBeingDragged()) {
-			System.err.println ("WastePileController::mousePressed(): Unexpectedly encountered a Dragging Object during a Mouse press.");
+			//System.err.println ("WastePileController::mousePressed(): Unexpectedly encountered a Dragging Object during a Mouse press.");
 			return;
 		}
 	

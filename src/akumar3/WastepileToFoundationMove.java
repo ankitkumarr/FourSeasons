@@ -48,9 +48,9 @@ public class WastepileToFoundationMove extends Move {
 				return true;
 			}
 		}
-		else if (!wastepile.empty() && (foundation.peek().isAce()) && (cardBeingDragged.getRank() == cardBeingDragged.KING) && (cardBeingDragged.getSuit() == foundation.peek().getSuit()))
+		else if (!wastepile.empty() && (cardBeingDragged.isAce()) && (foundation.peek().getRank() == foundation.peek().KING) && (cardBeingDragged.getSuit() == foundation.peek().getSuit()))
 			return true;
-		else if (!wastepile.empty() && (cardBeingDragged.getRank() == foundation.rank() - 1) && (cardBeingDragged.getSuit() == foundation.peek().getSuit()))
+		else if (!wastepile.empty() && (cardBeingDragged.getRank() == foundation.rank() + 1) && (cardBeingDragged.getSuit() == foundation.peek().getSuit()))
 			return true;
 		return false;
 	}
