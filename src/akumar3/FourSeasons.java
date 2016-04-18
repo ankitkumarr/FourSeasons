@@ -107,7 +107,7 @@ public class FourSeasons extends Solitaire {
 		columnViews = new ColumnView[5];
 		for (int col = 0; col < 5; col++) {
 			columnViews[col] = new ColumnView (columns[col]);
-			columnViews[col].setBounds (10 + (20*(col+1)) + (col*ci.getWidth()), 70 + ci.getHeight(), ci.getWidth(), ci.getHeight());
+			columnViews[col].setBounds (10 + (20*(col+1)) + (col*ci.getWidth()), 70 + ci.getHeight(), ci.getWidth(), ci.getHeight()*5);
 			container.addWidget (columnViews[col]);
 		}
 		wastepileView = new RowView(wastepile);

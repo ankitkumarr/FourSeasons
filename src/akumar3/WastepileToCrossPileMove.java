@@ -40,7 +40,14 @@ public class WastepileToCrossPileMove extends Move {
 
 	@Override
 	public boolean valid(Solitaire game) {
-		return !wastepile.empty();
+		
+		if (!wastepile.empty() && crosspile.empty())
+			return true;
+		if ((crosspile.peek().isAce()) && (cardBeingDragged.getRank() == cardBeingDragged.KING))
+			return true;
+		if (!wastepile.empty() && (cardBeingDragged.getRank() == crosspile.rank() - 1))
+			return true;
+		return false;
 	}
 
 }
