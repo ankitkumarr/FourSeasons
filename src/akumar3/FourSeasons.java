@@ -43,6 +43,7 @@ public class FourSeasons extends Solitaire {
 	@Override
 	public boolean hasWon() {
 		// TODO Auto-generated method stub
+		//return getScore().getValue()==52;
 		return false;
 	}
 	
@@ -72,7 +73,17 @@ public class FourSeasons extends Solitaire {
 		deckView.setMouseAdapter(new FourSeasonsDeckController (this, deck, wastepile));
 		deckView.setMouseMotionAdapter (new SolitaireMouseMotionAdapter(this));
 		deckView.setUndoAdapter (new SolitaireUndoAdapter(this));
-
+		
+		wastepileView.setMouseAdapter(new FourSeasonsWastepileController (this, wastepileView));
+		wastepileView.setMouseMotionAdapter (new SolitaireMouseMotionAdapter(this));
+		wastepileView.setUndoAdapter (new SolitaireUndoAdapter(this));
+		
+		for (int i = 0; i < 5; i++) {
+			columnViews[i].setMouseAdapter(new FourSeasonsCrosspileController (this, columnViews[i]));
+			columnViews[i].setMouseMotionAdapter (new SolitaireMouseMotionAdapter(this));
+			columnViews[i].setUndoAdapter (new SolitaireUndoAdapter(this));
+			
+		}
 		
 	}
 
