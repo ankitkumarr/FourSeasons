@@ -32,6 +32,7 @@ public class FourSeasons extends Solitaire {
 	RowView wastepileView;
 	IntegerView scoreView;
 	IntegerView numLeftView;
+	int firstFoundationRank;
 	
 	
 	@Override
@@ -48,7 +49,7 @@ public class FourSeasons extends Solitaire {
 	}
 	
 
-
+	@Override
 	public Dimension getPreferredSize() {
 	
 	  return new Dimension (2000, 1000);
@@ -60,9 +61,13 @@ public class FourSeasons extends Solitaire {
 	public void initialize() {
 		//Deck of cards to be dealt
 		// initialize model
+		
+		//TODO firstfoundationRank
+			this.firstFoundationRank = 1;
 				initializeModel(getSeed());
 				initializeView();
 				initializeControllers();
+				
 
 				
 				updateScore(0);
@@ -70,6 +75,8 @@ public class FourSeasons extends Solitaire {
 			}
 
 	private void initializeControllers() {
+		
+		//TODO firstfoundationRank
 		deckView.setMouseAdapter(new FourSeasonsDeckController (this, deck, wastepile));
 		deckView.setMouseMotionAdapter (new SolitaireMouseMotionAdapter(this));
 		deckView.setUndoAdapter (new SolitaireUndoAdapter(this));
@@ -82,6 +89,13 @@ public class FourSeasons extends Solitaire {
 			columnViews[i].setMouseAdapter(new FourSeasonsCrosspileController (this, columnViews[i]));
 			columnViews[i].setMouseMotionAdapter (new SolitaireMouseMotionAdapter(this));
 			columnViews[i].setUndoAdapter (new SolitaireUndoAdapter(this));
+			
+		}
+		
+		for (int i = 0; i < 4; i++) {
+			pileViews[i].setMouseAdapter(new FourSeasonsFoundationController (this, pileViews[i], firstFoundationRank));
+			pileViews[i].setMouseMotionAdapter (new SolitaireMouseMotionAdapter(this));
+			pileViews[i].setUndoAdapter (new SolitaireUndoAdapter(this));
 			
 		}
 		
@@ -156,6 +170,7 @@ public class FourSeasons extends Solitaire {
 	public static void main (String []args) {
 		// Seed is to ensure we get the same initial cards every time.
 		// Here the seed is to "order by suit."
+		
 		Main.generateWindow(new FourSeasons(), new Random().nextInt());
 	}
 		

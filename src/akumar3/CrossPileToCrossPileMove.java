@@ -3,19 +3,18 @@ package akumar3;
 import ks.common.games.Solitaire;
 import ks.common.model.Card;
 import ks.common.model.Column;
-import ks.common.model.Deck;
 import ks.common.model.Move;
 
-public class WastepileToCrossPileMove extends Move {
-
-	Column wastepile;
-	Card cardBeingDragged;
-	Column crosspile;
+public class CrossPileToCrossPileMove extends Move {
 	
-	public WastepileToCrossPileMove(Column from, Card cardBeingDragged, Column dest) {
+	Column crossdest;
+	Column crosssource;
+	Card cardBeingDragged;
+	
+	public CrossPileToCrossPileMove(Column from, Card cardBeingDragged, Column dest) {
 		this.cardBeingDragged = cardBeingDragged;
-		this.wastepile = from;
-		this.crosspile = dest;
+		this.crosssource = from;
+		this.crossdest = dest;
 	}
 
 	@Override
@@ -25,7 +24,7 @@ public class WastepileToCrossPileMove extends Move {
 			return false;
 		}
 		
-		crosspile.add(cardBeingDragged);
+		crossdest.add(cardBeingDragged);
 		//game.updateScore(+1);
 		return true;
 
@@ -33,7 +32,8 @@ public class WastepileToCrossPileMove extends Move {
 
 	@Override
 	public boolean undo(Solitaire game) {
-		wastepile.add(crosspile.get());
+		
+		crosssource.add(crossdest.get());
 		//game.updateScore(-1);
 		return true;
 	}
@@ -41,14 +41,16 @@ public class WastepileToCrossPileMove extends Move {
 	@Override
 	public boolean valid(Solitaire game) {
 		
-		//TODO: Not sure if wastepile has to be empty
-		if (crosspile.empty())
+		
+		//TODO: EMPTY?
+		if (crossdest.empty())
 			return true;
-		if ((crosspile.peek().isAce()) && (cardBeingDragged.getRank() == cardBeingDragged.KING))
+		if ((crossdest.peek().isAce()) && (cardBeingDragged.getRank() == cardBeingDragged.KING))
 			return true;
-		if ((cardBeingDragged.getRank() == crosspile.rank() - 1))
+		if ((cardBeingDragged.getRank() == crossdest.rank() - 1))
 			return true;
-		return false;
+		return false; 
+
 	}
 
 }
