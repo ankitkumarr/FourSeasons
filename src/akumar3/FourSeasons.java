@@ -44,7 +44,7 @@ public class FourSeasons extends Solitaire {
 	@Override
 	public boolean hasWon() {
 		// TODO Auto-generated method stub
-		return getScore().getValue()==3;
+		return getScore().getValue()==52;
 	}
 	
 
@@ -176,6 +176,9 @@ public class FourSeasons extends Solitaire {
 		// Here the seed is to "order by suit."
 		
 		Main.generateWindow(new FourSeasons(), new Random().nextInt());
+		//If want to test the game being won.
+		//Main.generateWindow(new FourSeasons(), Deck.OrderByRank);
+
 	}
 		
 		

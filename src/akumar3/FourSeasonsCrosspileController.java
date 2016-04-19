@@ -66,7 +66,7 @@ public class FourSeasonsCrosspileController extends java.awt.event.MouseAdapter{
 		// cardView widget reflect the original card location on the screen.
 		Widget w = c.getActiveDraggingObject();
 		if (w != Container.getNothingBeingDragged()) {
-			System.err.println ("WastePileController::mousePressed(): Unexpectedly encountered a Dragging Object during a Mouse press.");
+		//	System.err.println ("WastePileController::mousePressed(): Unexpectedly encountered a Dragging Object during a Mouse press.");
 			return;
 		}
 	
@@ -89,7 +89,7 @@ public class FourSeasonsCrosspileController extends java.awt.event.MouseAdapter{
 		/** Return if there is no card being dragged chosen. */
 		Widget draggingWidget = c.getActiveDraggingObject();
 		if (draggingWidget == Container.getNothingBeingDragged()) {
-			System.err.println ("FoundationController::mouseReleased() unexpectedly found nothing being dragged.");
+			//System.err.println ("FoundationController::mouseReleased() unexpectedly found nothing being dragged.");
 			c.releaseDraggingObject();		
 			return;
 		}
@@ -97,7 +97,7 @@ public class FourSeasonsCrosspileController extends java.awt.event.MouseAdapter{
 		/** Recover the from BuildablePile OR waste Pile */
 		Widget fromWidget = c.getDragSource();
 		if (fromWidget == null) {
-			System.err.println ("FoundationController::mouseReleased(): somehow no dragsource in container.");
+			//System.err.println ("FoundationController::mouseReleased(): somehow no dragsource in container.");
 			c.releaseDraggingObject();
 			return;
 		}
