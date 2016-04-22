@@ -175,9 +175,9 @@ public class FourSeasons extends Solitaire {
 		// Seed is to ensure we get the same initial cards every time.
 		// Here the seed is to "order by suit."
 		
-		Main.generateWindow(new FourSeasons(), new Random().nextInt());
+		//Main.generateWindow(new FourSeasons(), new Random().nextInt());
 		//If want to test the game being won.
-		//Main.generateWindow(new FourSeasons(), Deck.OrderByRank);
+		Main.generateWindow(new FourSeasons(), Deck.OrderByRank);
 
 	}
 		
