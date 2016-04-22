@@ -121,17 +121,17 @@ public class FourSeasons extends Solitaire {
 			container.addWidget (columnViews[col]);
 		}
 		wastepileView = new RowView(wastepile);
-		wastepileView.setBounds(50 + ci.getWidth(), 120 + (ci.getHeight()*7), 20*ci.getWidth(), ci.getHeight());
+		wastepileView.setBounds(50 + ci.getWidth(), 120 + (ci.getHeight()*7), 16*ci.getWidth(), ci.getHeight());
 		container.addWidget(wastepileView);
 		
 		scoreView = new IntegerView (getScore());
 		scoreView.setFontSize (36);
-		scoreView.setBounds (90+21*ci.getWidth(), 120 + 7*ci.getHeight(), 100, 60);
+		scoreView.setBounds (90+17*ci.getWidth(), 120 + 7*ci.getHeight(), 100, 60);
 		container.addWidget (scoreView);
 
 		numLeftView = new IntegerView (getNumLeft());
 		numLeftView.setFontSize (36);
-		numLeftView.setBounds (200+21*ci.getWidth(), 120 + 7*ci.getHeight(), 100, 60);
+		numLeftView.setBounds (200+17*ci.getWidth(), 120 + 7*ci.getHeight(), 100, 60);
 		container.addWidget (numLeftView);
 		
 	}
